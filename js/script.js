@@ -29,8 +29,11 @@ function displayWinner() {
     if (humanScore > computerScore) {
         console.log("You won the game!");
     }
-    else {
+    else if (computerScore > humanScore) {
         console.log("You lost the game!");
+    }
+    else {
+        console.log("You tied the game!");
     }
 }
 
