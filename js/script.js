@@ -1,11 +1,45 @@
 // Main
+// Initialize global variables
 let humanScore = 0,
     computerScore = 0;
 
-console.log(getHumanChoice());
+// Begin Round
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
 
 // Functions
-
+function playRound(humanChoice, computerChoice) {
+    // Determine who wins and through which choice
+    if (humanChoice === "rock" && computerChoice === "paper") {
+        console.log("You lose! Paper beats Rock");
+        computerScore++;
+    }
+    else if (humanChoice === "rock" && computerChoice === "scissors") {
+        console.log("You win! Rock beats Scissors");
+        humanScore++;
+    }
+    else if (humanChoice === "paper" && computerChoice === "rock") {
+        console.log("You win! Paper beats Rock");
+        humanScore++;
+    }
+    else if (humanChoice === "paper" && computerChoice === "scissors") {
+        console.log("You lose! Scissors beats Paper");
+        computerScore++;
+    }
+    else if (humanChoice === "scissors" && computerChoice == "rock") {
+        console.log("You lose! Rock beats Scissors");
+        computerChoice++;
+    }
+    else if (humanChoice === "scissors" && computerChoice == "paper") {
+        console.log("You win! Scissors beats Paper");
+        humanScore++;
+    }
+    else {
+        console.log("It's a Tie!");
+    }
+}
 
 function getComputerChoice() {
     // Generate random number from 0-2 to be assigned to rock, paper, or scissors
