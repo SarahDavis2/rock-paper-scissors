@@ -3,13 +3,37 @@
 let humanScore = 0,
     computerScore = 0;
 
-// Begin Round
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
+playGame();
 
 // Functions
+function playGame() {
+    const MAX_ROUNDS = 5;
+
+    // Each game consists of 5 rounds
+    for (let i = 0; i < MAX_ROUNDS; i++)
+    {
+        beginRound();
+    }
+
+    displayWinner();
+}
+
+function beginRound() {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+
+    playRound(humanSelection, computerSelection);
+}
+
+function displayWinner() {
+    if (humanScore > computerScore) {
+        console.log("You won the game!");
+    }
+    else {
+        console.log("You lost the game!");
+    }
+}
+
 function playRound(humanChoice, computerChoice) {
     // Determine who wins and through which choice
     if (humanChoice === "rock" && computerChoice === "paper") {
@@ -55,8 +79,6 @@ function getComputerChoice() {
 function getHumanChoice() {
     return prompt('Please enter a choice of "rock", "paper", or "scissors": ').toLowerCase();
 }
-
-
 
 // ******[START] Functions for getComputerChoice() [START]******
 
