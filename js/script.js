@@ -38,33 +38,46 @@ function displayWinner() {
 }
 
 function playRound(humanChoice, computerChoice) {
-    // Determine who wins and through which choice
-    if (humanChoice === "rock" && computerChoice === "paper") {
-        console.log("You lose! Paper beats Rock");
-        computerScore++;
+    // Determine winner
+    const roundWinner = determineRoundWinner(humanChoice, computerChoice);
+
+    // Display winner
+    displayRoundWinner(roundWinner, humanChoice, computerChoice);
+}
+
+function determineRoundWinner(humanChoice, computerChoice) {
+    let roundWinner = "";
+
+    // Determine if tie
+    if (humanChoice === computerChoice) {
     }
-    else if (humanChoice === "rock" && computerChoice === "scissors") {
-        console.log("You win! Rock beats Scissors");
+    // Determine if user wins
+    else if ((humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") || 
+        (humanChoice === "scissors" && computerChoice == "paper")
+    ) {
+        roundWinner = "human";
         humanScore++;
     }
-    else if (humanChoice === "paper" && computerChoice === "rock") {
-        console.log("You win! Paper beats Rock");
-        humanScore++;
-    }
-    else if (humanChoice === "paper" && computerChoice === "scissors") {
-        console.log("You lose! Scissors beats Paper");
-        computerScore++;
-    }
-    else if (humanChoice === "scissors" && computerChoice == "rock") {
-        console.log("You lose! Rock beats Scissors");
-        computerChoice++;
-    }
-    else if (humanChoice === "scissors" && computerChoice == "paper") {
-        console.log("You win! Scissors beats Paper");
-        humanScore++;
-    }
+    // Determine if computer wins
     else {
-        console.log("It's a Tie!");
+        roundWinner = "computer";
+        computerScore++;
+    }
+
+    return roundWinner;
+}
+
+function displayRoundWinner(roundWinner, humanChoice, computerChoice) {
+    if (roundWinner === "human") {
+        console.log(`You won! ${humanChoice} beats ${computerChoice}`);
+    }
+    else if (roundWinner === "computer") {
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+    }
+    // Tie
+    else {
+        console.log(`You Tie!`);
     }
 }
 
