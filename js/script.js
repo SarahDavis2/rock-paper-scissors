@@ -69,16 +69,27 @@ function determineRoundWinner(humanChoice, computerChoice) {
 }
 
 function displayRoundWinner(roundWinner, humanChoice, computerChoice) {
+    // Capitalize first letter
+    humanChoice = capitalizeFirstLetter(humanChoice);
+    computerChoice = capitalizeFirstLetter(computerChoice);
+
+    // Display winner
     if (roundWinner === "human") {
         console.log(`You won! ${humanChoice} beats ${computerChoice}`);
     }
     else if (roundWinner === "computer") {
         console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
     }
-    // Tie
+    // Display tie
     else {
         console.log(`You Tie!`);
     }
+}
+
+function capitalizeFirstLetter(str) {
+    const firstChar = str.at(0).toUpperCase();
+    const latterChars = str.slice(1);
+    return firstChar + latterChars;
 }
 
 function getComputerChoice() {
