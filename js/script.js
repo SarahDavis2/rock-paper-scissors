@@ -1,11 +1,14 @@
-// Main
+// *** Main ***
+
 // Initialize global variables
 let humanScore = 0,
     computerScore = 0;
 
+// Run game
 playGame();
 
-// Functions
+// *** Functions ***
+
 function playGame() {
     const MAX_ROUNDS = 5;
 
@@ -107,8 +110,6 @@ function getHumanChoice() {
     return prompt('Please enter a choice of "rock", "paper", or "scissors": ').toLowerCase();
 }
 
-// ******[START] Functions for getComputerChoice() [START]******
-
 // Generates random integer with Math.random()
 function getRandInt(intRange) {
     return Math.floor(Math.random() * intRange);
@@ -132,5 +133,3 @@ function convertToStr(intChoice) {
 
     return strChoice;
 }
-
-// ******[END] Functions for getComputerChoice() [END]******
