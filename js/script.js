@@ -8,6 +8,13 @@ function getComputerChoice() {
     return strChoice;
 }
 
+// Skip user validation
+function getHumanChoice() {
+    return prompt('Please enter a choice of "rock", "paper", or "scissors": ');
+}
+
+// ******[START] Functions for getComputerChoice() [START]******
+
 // Generates random integer with Math.random()
 function getRandInt(intRange) {
     return Math.floor(Math.random() * intRange);
@@ -32,4 +39,7 @@ function convertToStr(intChoice) {
     return strChoice;
 }
 
-console.log(getComputerChoice());
+// ******[END] Functions for getComputerChoice() [END]******
+
+// console.log(getComputerChoice());
+// console.log(getHumanChoice());
