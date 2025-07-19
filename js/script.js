@@ -2,9 +2,10 @@
 let humanScore = 0,
     computerScore = 0;
 
-
+console.log(getHumanChoice());
 
 // Functions
+
 
 function getComputerChoice() {
     // Generate random number from 0-2 to be assigned to rock, paper, or scissors
@@ -18,7 +19,7 @@ function getComputerChoice() {
 
 // Skip user validation
 function getHumanChoice() {
-    return prompt('Please enter a choice of "rock", "paper", or "scissors": ');
+    return prompt('Please enter a choice of "rock", "paper", or "scissors": ').toLowerCase();
 }
 
 
