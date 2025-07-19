@@ -1,3 +1,11 @@
+// Main
+let humanScore = 0,
+    computerScore = 0;
+
+
+
+// Functions
+
 function getComputerChoice() {
     // Generate random number from 0-2 to be assigned to rock, paper, or scissors
     const intChoice = getRandInt(3);
@@ -12,6 +20,8 @@ function getComputerChoice() {
 function getHumanChoice() {
     return prompt('Please enter a choice of "rock", "paper", or "scissors": ');
 }
+
+
 
 // ******[START] Functions for getComputerChoice() [START]******
 
@@ -40,6 +50,3 @@ function convertToStr(intChoice) {
 }
 
 // ******[END] Functions for getComputerChoice() [END]******
-
-// console.log(getComputerChoice());
-// console.log(getHumanChoice());
