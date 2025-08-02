@@ -1,6 +1,7 @@
 // Initialize global variables
-let humanScore = 0,
-    computerScore = 0;
+let humanScore = 0;
+let computerScore = 0;
+const GAME_WINNER_SCORE = 5;
 
 // Play round through user input
 const btns = document.querySelectorAll("button");
@@ -124,3 +125,13 @@ function displayCurrentScore() {
     showHumanScore.textContent = `Your Score: ${humanScore}`;
     showComputerScore.textContent = `Computer Score: ${computerScore}`;
 }
+
+function determineGameEnd() {
+    let isGameEnd = false;
+
+    if (humanScore === GAME_WINNER_SCORE || computerScore === GAME_WINNER_SCORE) {
+        isGameEnd = true;
+    }
+    return isGameEnd;
+}
+
