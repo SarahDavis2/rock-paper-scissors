@@ -29,6 +29,9 @@ function playRound(humanChoice, computerChoice) {
 
     // Display winner
     displayRoundWinner(roundWinner, humanChoice, computerChoice);
+
+    // Display current score
+    displayCurrentScore();
 }
 
 function determineRoundWinner(humanChoice, computerChoice) {
@@ -62,15 +65,15 @@ function displayRoundWinner(roundWinner, humanChoice, computerChoice) {
     // Display winner
     const displayResults = document.querySelector(".display-results")
     if (roundWinner === "human") {
-        displayResults.textContent = `You won! ${humanChoice} beats ${computerChoice}`;
+        displayResults.textContent = `Round Winner: You won! ${humanChoice} beats ${computerChoice}`;
 
     }
     else if (roundWinner === "computer") {
-        displayResults.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
+        displayResults.textContent = `Round Winner: You lose! ${computerChoice} beats ${humanChoice}`;
     }
     // Display tie
     else {
-        displayResults.textContent = "You Tie!";
+        displayResults.textContent = "Round Winner: You Tie!";
     }
 }
 
@@ -112,4 +115,12 @@ function convertToStr(intChoice) {
     }
 
     return strChoice;
+}
+
+function displayCurrentScore() {
+    const showHumanScore = document.querySelector(".human-score");
+    const showComputerScore = document.querySelector(".computer-score");
+
+    showHumanScore.textContent = `Your Score: ${humanScore}`;
+    showComputerScore.textContent = `Computer Score: ${computerScore}`;
 }
