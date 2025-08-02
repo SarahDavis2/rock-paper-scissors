@@ -1,32 +1,15 @@
-// *** Main ***
-
 // Initialize global variables
 let humanScore = 0,
     computerScore = 0;
 
-// Run game
-playGame();
-
-// *** Functions ***
-
-function playGame() {
-    const MAX_ROUNDS = 5;
-
-    // Each game consists of 5 rounds
-    for (let i = 0; i < MAX_ROUNDS; i++)
-    {
-        beginRound();
-    }
-
-    displayWinner();
-}
-
-function beginRound() {
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-
-    playRound(humanSelection, computerSelection);
-}
+// Play round through user input
+const btns = document.querySelectorAll("button");
+btns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+        let humanChoice = e.target.className;
+        playRound(humanChoice, getComputerChoice());
+    });
+});
 
 function displayWinner() {
     if (humanScore > computerScore) {
@@ -77,15 +60,17 @@ function displayRoundWinner(roundWinner, humanChoice, computerChoice) {
     computerChoice = capitalizeFirstLetter(computerChoice);
 
     // Display winner
+    const displayResults = document.querySelector(".display-results")
     if (roundWinner === "human") {
-        console.log(`You won! ${humanChoice} beats ${computerChoice}`);
+        displayResults.textContent = `You won! ${humanChoice} beats ${computerChoice}`;
+
     }
     else if (roundWinner === "computer") {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+        displayResults.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
     }
     // Display tie
     else {
-        console.log(`You Tie!`);
+        displayResults.textContent = "You Tie!";
     }
 }
 
@@ -103,11 +88,6 @@ function getComputerChoice() {
     const strChoice = convertToStr(intChoice);
 
     return strChoice;
-}
-
-// Skip user validation
-function getHumanChoice() {
-    return prompt('Please enter a choice of "rock", "paper", or "scissors": ').toLowerCase();
 }
 
 // Generates random integer with Math.random()
