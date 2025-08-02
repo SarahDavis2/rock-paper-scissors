@@ -6,11 +6,13 @@ const GAME_WINNER_SCORE = 5;
 // Play round through user input
 const btns = document.querySelectorAll("button");
 btns.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-        let humanChoice = e.target.className;
-        playRound(humanChoice, getComputerChoice());
-    });
+    btn.addEventListener("click", btnFunc);
 });
+
+function btnFunc(e) {
+    let humanChoice = e.target.className;
+    playRound(humanChoice, getComputerChoice());
+}
 
 function displayWinner() {
     if (humanScore > computerScore) {
@@ -33,6 +35,13 @@ function playRound(humanChoice, computerChoice) {
 
     // Display current score
     displayCurrentScore();
+
+    // If determineGameWinner returns nothing, then game has not ended yet
+    let gameWinner = determineGameWinner();
+    if (gameWinner) {
+        displayGameWinner(gameWinner);
+        endGame();
+    }
 }
 
 function determineRoundWinner(humanChoice, computerChoice) {
@@ -126,12 +135,25 @@ function displayCurrentScore() {
     showComputerScore.textContent = `Computer Score: ${computerScore}`;
 }
 
-function determineGameEnd() {
-    let isGameEnd = false;
+function determineGameWinner() {
+    let gameWinner = "";
 
-    if (humanScore === GAME_WINNER_SCORE || computerScore === GAME_WINNER_SCORE) {
-        isGameEnd = true;
+    if (humanScore === GAME_WINNER_SCORE) {
+        gameWinner = "human";
+    } else if (computerScore === GAME_WINNER_SCORE) {
+        gameWinner = "computer";
     }
-    return isGameEnd;
+    return gameWinner;
 }
 
+function displayGameWinner(winner) {
+    const displayResults = document.querySelector(".display-results");
+    displayResults.textContent = `Game Winner: ${winner}`;
+}
+
+function endGame() {
+    const btns = document.querySelectorAll("button");
+    btns.forEach((btn) => {
+        btn.removeEventListener("click", btnFunc);
+    });
+}
